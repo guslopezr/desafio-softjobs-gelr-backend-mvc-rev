@@ -64,3 +64,10 @@ $2a$10$1.3.AjIy5JKlYuD91B/jNeYhN4gx.sQeJ2Rku0twnbpkjT/3t6REq
   "rol": "Backend Developer",
   "lenguage": "Python"
 }
+
+{
+  "email": "nicolov@gmail.com",
+  "password": "developer5",
+  "rol": "Backend Developer",
+  "lenguage": "Ruby"
+}
