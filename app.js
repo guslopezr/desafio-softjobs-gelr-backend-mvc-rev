@@ -21,7 +21,6 @@ const cors = require('cors')
 const app = express();
 const indexRoutes = require('./src/routes/indexRoutes')
 require('dotenv').config()
-
 const PORT = process.env.PORT || 3000;
 //const PORT = 5040;
 
