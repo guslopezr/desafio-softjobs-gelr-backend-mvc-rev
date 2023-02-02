@@ -20,7 +20,8 @@ const express = require('express');
 const cors = require('cors')
 const app = express();
 const indexRoutes = require('./src/routes/indexRoutes')
-const PORT = process.env.PORT || '3000';
+    //const PORT = process.env.PORT || '3000';
+const PORT = 5040;
 
 //const PORT = process.env.APP_PORT;
 
