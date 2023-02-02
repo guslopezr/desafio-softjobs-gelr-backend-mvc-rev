@@ -1,16 +1,14 @@
-//versión cgpt 220128-10:28
-
 const pool = require('../database/conexion');
 const bcrypt = require('bcryptjs');
 
-const getUsuarios = async (email) => { // para validar hay que darle un algún parámetro para validar sino, no te tomará nada
-    const value = [email]               // en este caso ocupamos el correo, ya que la contraseña es mala práctica según la clase
+const getUsuarios = async(email) => { // para validar hay que darle un algún parámetro para validar sino, no te tomará nada
+    const value = [email] // en este caso ocupamos el correo, ya que la contraseña es mala práctica según la clase
     const consulta = "SELECT * FROM usuarios WHERE email = $1"
     const { rows: usuarios } = await pool.query(consulta, value);
     return usuarios;
 };
 
-const registrarUsuario = async (usuario) => {
+const registrarUsuario = async(usuario) => {
     const { email, password, rol, lenguage } = usuario;
     const passwordEncriptada = bcrypt.hashSync(password); // el hashSync es asíncrono, borré el segundo parametro porque no sé que hacía
     const values = [email, passwordEncriptada, rol, lenguage];
@@ -19,15 +17,48 @@ const registrarUsuario = async (usuario) => {
 };
 
 
-const verificarCredenciales = async (email, password) => {
-    const values = [email]
-    const consulta = "SELECT * FROM usuarios WHERE email = $1"
+/* const verificarCredenciales = async(email, password) => {
+    const values = [email, password]
+    const consulta = "SELECT * FROM usuarios WHERE email = $1 AND password = $2"
     const { rows: [usuario], rowCount } = await pool.query(consulta, values)
     const { password: passwordEncriptada } = usuario
     const passwordEsCorrecta = bcrypt.compareSync(password, passwordEncriptada)
     if (!passwordEsCorrecta || !rowCount)
         throw { code: 401, message: "Email o contraseña incorrecta" }
-}
+} */
+
+//codigo de prueba
+
+/* const verificarCredenciales = async(email, password) => {
+    const values = [email, password]
+    const consulta = "SELECT * FROM usuarios WHERE email = $1 AND password = $2"
+    const { rows: [usuario], rowCount } = await pool.query(consulta, values)
+    if (!usuario) {
+        throw { code: 401, message: "Email o contraseña incorrecta" }
+    }
+    const { password: passwordEncriptada } = usuario
+    const passwordEsCorrecta = bcrypt.compareSync(password, passwordEncriptada)
+    if (!passwordEsCorrecta || !rowCount) {
+        throw { code: 401, message: "Email o contraseña incorrecta" }
+    }
+} */
+
+//codigo de prueba 2
+
+const verificarCredenciales = async(email, password) => {
+    const values = [email];
+    const consulta = "SELECT * FROM usuarios WHERE email = $1";
+    const { rows: [usuario], rowCount } = await pool.query(consulta, values);
+    if (!usuario) {
+        throw { code: 401, message: "Email o contraseña incorrecta" };
+    }
+    const passwordEsCorrecta = bcrypt.compareSync(password, usuario.password);
+    if (!passwordEsCorrecta) {
+        throw { code: 401, message: "Email o contraseña incorrecta" };
+    }
+};
+
+
 
 module.exports = { getUsuarios, registrarUsuario, verificarCredenciales };
 

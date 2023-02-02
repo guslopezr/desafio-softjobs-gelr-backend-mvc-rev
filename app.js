@@ -14,6 +14,8 @@ app.listen(PORT, console.log(`SERVER ON PORT: ${PORT}`)) */
 
 ///
 
+
+
 const express = require('express');
 const cors = require('cors')
 const app = express();
@@ -30,6 +32,12 @@ app.use(express.static('public'))
 app.use('/', indexRoutes)
 
 app.listen(PORT, (err) => console.error(err));
+
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', 'https://softjobs-gelr.netlify.app');
+    next();
+});
+
 
 
 /* app.listen(port,  () => {
