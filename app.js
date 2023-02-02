@@ -32,7 +32,7 @@ app.use(express.static('public'))
 
 app.use('/', indexRoutes)
 
-app.listen(PORT, (err) => console.error(err));
+app.listen(PORT, console.log("Puerto levantado"));
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', 'https://softjobs-gelr.netlify.app');
