@@ -1,0 +1,79 @@
+
+USUARIOS DE PRUEBA PARA ACCEDER: 
+
+{
+  "email": "guslopezr@gmail.com",
+  "password": "112233",
+  "rol": "FullStack Developer",
+  "lenguage": "Javascript"
+}
+
+Token para probar en local después de Bearer
+$2a$10$1.3.AjIy5JKlYuD91B/jNeYhN4gx.sQeJ2Rku0twnbpkjT/3t6REq
+
+
+{
+  "email": "juanpeluca@gmail.com",
+  "password": "developer1",
+  "rol": "FullStack Developer",
+  "lenguage": "Javascript"
+}
+
+{
+  "email": "rogelioaguas@gmail.com",
+  "password": "thewall1979",
+  "rol": "Backend Developer",
+  "lenguage": "Python"
+}
+
+{
+  "email": "nicolas@gmail.com",
+  "password": "developer4",
+  "rol": "Backend Developer",
+  "lenguage": "Python"
+}
+
+{
+  "email": "nicolov2@gmail.com",
+  "password": "developer5",
+  "rol": "Backend Developer",
+  "lenguage": "Ruby"
+}
+
+{
+  "email": "flo@gmail.com",
+  "password": "332211",
+  "rol": "Backend Developer",
+  "lenguage": "Ruby"
+}
+
+
+
+Estructura de las carpetas de back end
+
+main / src
+Controller: consultas.js o similar. Por ejemplo "methodControler"
+Database: conexión a la base de datos
+Routes: index routes y methodRoutes, ver https://github.com/guslopezr/likeme-parte2/tree/master/src/routes 
+Services: indexServices, ver ejemplo en https://github.com/guslopezr/likeme-parte2/tree/master/src/services
+
+Paso a paso:
+
+Importar indexServices en controller
+Exportar "methodController" a indexController (???)
+Omportarlo en indexRoutes, desde acá importarlo a App
+En App importarlo  const indexRoutes = require('./src/routes/indexRoutes') 
+
+
+RUTAS DE PRUEBA en local:
+
+
+POST
+http://localhost:3000/registrarse   (Crear)
+
+GET
+http://localhost:3000/perfil (ver)
+
+POST
+http://localhost:3000/login (acceso)
+
